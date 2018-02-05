@@ -1,0 +1,48 @@
+! 
+! Néfix Estrada''s chinatown cyberpunk theme
+! https://github.com/NefixEstrada
+!
+
+!
+! Colors
+! http://terminal.sexy/#JR0sx86kJR0swEI20a46tqJnS4ygrEuVoe_kx86kuHIiwEI20a46tqJnS4ygrEuVoe_k7e3R
+!
+
+
+! special
+*.foreground:   #c7cea4
+*.background:   #251d2c
+*.cursorColor:  #c7cea4
+
+! black
+*.color0:       #251d2c
+*.color8:       #b87222
+
+! red
+*.color1:       #c04236
+*.color9:       #c04236
+
+! green
+*.color2:       #d1ae3a
+*.color10:      #d1ae3a
+
+! yellow
+*.color3:       #b6a267
+*.color11:      #b6a267
+
+! blue
+*.color4:       #4b8ca0
+*.color12:      #4b8ca0
+
+! magenta
+*.color5:       #ac4b95
+*.color13:      #ac4b95
+
+! cyan
+*.color6:       #a1efe4
+*.color14:      #a1efe4
+
+! white
+*.color7:       #c7cea4
+*.color15:      #ededd1
+

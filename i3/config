@@ -1,0 +1,163 @@
+#
+# Néfix Estrada's i3 config file
+# https://github.com/NefixEstrada
+#
+
+# 
+# Configuration
+#
+
+# Mod key
+set $mod Mod4
+floating_modifier $mod
+
+# Fonts
+font pango:DejaVu Sans Mono 10
+
+
+#
+# Behaviour
+#
+
+# Close a window
+bindsym $mod+Shift+q kill
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Splits
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Fullscreen
+bindsym $mod+f fulscreen toggle
+
+# Change the container layout
+bindsym $mod+s stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toogle floating window
+bindsym $mod+Shift+space floating toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+bindsym $mod+d focus child
+
+# Reload the i3 configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 (keeping the session)
+bindsym $mod+Shift+r restart
+
+# Exit i3
+bindsym $mod+Shift+e exit i3
+
+# Resize window
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+  # Resize the window using the arrow keys
+  bindsym Left resize shrink width 10px or 10 ppt
+  bindsym Down resize grow height 10px or 10 ppt
+  bindsym Up resize shrink height 10px or 10 ppt
+  bindsym Right resize grow width 10px or 10 ppt
+
+  # Go back to the normal mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+
+#
+# Workspaces
+#
+
+# Switch to workspae
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move the focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 0
+
+#
+# Gaps
+#
+
+# Default gaps
+gaps inner 60
+gaps outer 30
+
+# Switch gaps
+set $mode_gaps Toogle gaps: (0)Off (1) Tiny (2)Normal (3)Huge
+bindsym $mod+n mode "$mode_gaps"
+
+# Gaps switch mode
+mode "$mode_gaps" {
+  bindsym 0 mode "default", gaps inner all set 0, gaps outer all set 0
+  bindsym 1 mode "default", gaps inner all set 20, gaps outer all set 10
+  bindsym 2 mode "default", gaps inner all set 30, gaps outer all set 20
+  bindsym 3 mode "default", gaps inner all set 60, gaps outer all set 30
+}
+
+#
+# Bar
+#
+bar {
+  status_command i3status
+}
+
+# 
+# Programs execution
+#
+
+# Open a terminal
+bindsym $mod+Return exec termite
+
+# Open the Dmenu
+bindsym $mod+space exec --no-startup-id j4-dmenu-desktop
+
+# Lock the screen
+bindsym $mod+l exec --no-startup-id $HOME/.dotfiles/scripts/lockscreen.sh
+
+
+#
+# Startup programs execution
+#
+
+# Use the compton compositor
+exec --no-startup-id compton
+
+# Set the main click to the right button
+exec --no-startup-id xmodmap -e "pointer = 3 2 1"
+
+# Set the wallpaper
+exec --no-startup-id feh --bg-fill /home/nefix/Imatges/bg_cyberpunk_chinatown.jpg --no-fehbg
