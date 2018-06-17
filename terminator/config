@@ -1,0 +1,24 @@
+[global_config]
+  borderless = True
+  inactive_color_offset = 0.753086419753
+  title_font = PragmataPro 12
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.08
+    cursor_color = "#aaaaaa"
+    font = PragmataPro 12
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False

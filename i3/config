@@ -4,8 +4,7 @@
 #
 
 
-# 
-# Configuration
+# /# Configuration
 #
 
 # Mod key
@@ -13,8 +12,12 @@ set $mod Mod4
 floating_modifier $mod
 
 # Fonts
-font pango:DejaVu Sans Mono 10
+font pango: Pragmata Pro 10
 
+# Disable title bars
+new_window 1pixel
+default_border none
+default_floating_border none
 
 #
 # Behaviour
@@ -40,7 +43,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # Fullscreen
-bindsym $mod+f fulscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # Change the container layout
 bindsym $mod+s stacking
@@ -149,17 +152,14 @@ mode "$mode_gaps" {
 #
 # Bar
 #
-bar {
-  status_command i3status
-}
-
+# TODO: Polybar
 
 # 
 # Programs execution
 #
 
 # Open a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec urxvt
 
 # Open the Dmenu
 bindsym $mod+space exec --no-startup-id j4-dmenu-desktop
@@ -173,10 +173,19 @@ bindsym $mod+l exec --no-startup-id $HOME/.dotfiles/scripts/lockscreen.sh
 #
 
 # Use the compton compositor
-exec --no-startup-id compton
+exec --no-startup-id compton --config $HOME/.config/compton/compton.conf
 
 # Set the main click to the right button
 exec --no-startup-id xmodmap -e "pointer = 3 2 1"
 
-# Set the wallpaper
-exec --no-startup-id feh --bg-fill /home/nefix/Imatges/bg_cyberpunk_chinatown.jpg --no-fehbg
+# Set the correct keyboard layout
+exec --no-startup-id setxkbmap us altgr-intl
+
+# Set the wallpaper and the colors
+exec --no-startup-id feh --bg-fill $HOME/Imatges/cyberpunk/wallhaven-656431.jpg --no-fehbg
+
+# Start the audio server
+exec --no-startup-id pulseaudio --start
+
+# Polybar
+exec --no-startup-id polybar main-screen

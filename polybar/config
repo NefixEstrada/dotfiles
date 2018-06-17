@@ -1,0 +1,186 @@
+[colours]
+
+; dark
+background = ${xrdb:color0}
+background-alt = #1B1D1E
+foreground = #d0d0d0
+primary = ${xrdb:color1}
+; end
+
+; light
+;background = ${xrdb:color7}
+;background-alt = #cccccc
+;foreground = ${xrdb:color0}
+;primary = ${xrdb:color1}
+; end
+
+
+secondary = #bf5f4d
+alert = ${xrdb:color3}
+
+[bar/main-screen]
+monitor = VGA-2
+fixed-center = true
+width = 100% 
+height = 24 
+radius = 4.0
+
+background = ${colours.background}
+foreground = ${colours.foreground}
+
+line-size = 2
+line-color = #ffffff
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 5
+
+module-margin-left = 2
+module-margin-right = 3
+
+font-0 = WunconSiji
+font-1 = Pragmata Pro
+font-2 = FontAwesome:size=8;0
+font-3 = Curie:size=8;0
+font-4 = NotoSans-Regular:size=8;0
+font-5 = Kochi Gothic:size=8;0
+
+modules-left = i3
+modules-center = mpd
+modules-right = xkeyboard volume date
+
+;separator = |
+
+;tray-position = right
+;tray-detached = false
+;tray-padding = 1
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+label-layout-underline = ${colours.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colours.primary}
+label-indicator-underline = ${colours.primary}
+
+;=====================================================
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+;=====================================================
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+;=====================================================
+;
+;   Modules
+;
+;=====================================================
+
+[module/date]
+type = internal/date
+interval = 1
+
+label = %date%, %time%
+
+date-alt = %a %e %b
+time-alt = %I:%M %p
+date = %Y.%m.%d
+time = %H:%M
+
+format =   <label>
+format-foreground = ${colours.foreground}
+
+;=====================================================
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = ${colours.background}
+
+label-focused = %name%
+label-focused-foreground = ${colours.foreground}
+label-focused-background = ${colours.background-alt}
+label-focused-underline = ${colours.primary}
+label-focused-padding = 4
+
+label-unfocused = %name%
+label-unfocused-padding = 4
+
+label-visible = %name%
+label-visible-underline = ${colours.secondary}
+label-visible-padding = 4
+
+label-urgent = %name%
+;label-urgent-background = ${colours.alert}
+label-urgent-underline = ${colours.alert}
+label-urgent-padding = 4
+
+;=====================================================
+
+[module/mpd]
+type = internal/mpd
+format-playing = <icon-prev> <toggle> <icon-next> <label-song>
+format-paused = <icon-prev> <toggle> <icon-next> <label-song>
+format-stopped = <toggle> 
+
+label-song = %artist% - %title%
+label-song-maxlen = 25
+label-song-ellipsis = false
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+bar-progress-width = 20
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+;=====================================================
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume>
+label-volume =  %percentage%%
+
+format-muted = <label-muted>
+label-muted =  mute
+
+;=====================================================
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format = <label-indicator>
+
+label-indicator-padding = 3
+label-indicator-background = ${colours.primary}
+label-indicator-foreground = ${colours.background}
+
+;=====================================================
+;
+;   End Modules
+;
+;=====================================================
+
